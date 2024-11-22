@@ -98,7 +98,7 @@ jobs:
           godot --headless --export-release "$PLATFORM" export/$FILENAME$EXT
         fi
         
-        godot --no-window --export "$PLATFORM" export/$FILENAME$EXT
+        godot --no-window --export-release "$PLATFORM" export/$FILENAME$EXT
 
     - name: Upload result to artifact
       uses: actions/upload-artifact@v4
