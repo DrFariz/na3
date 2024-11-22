@@ -93,12 +93,7 @@ jobs:
         mkdir -p export
         EXT=${{ fromJSON(env.EXTS)[env.PLATFORM] || '.zip' }}
         echo "EXT=${EXT}" >> $GITHUB_ENV
-        echo "version: $VERSION"
-        if [ $VERSION == "4.3.dev3" ]; then
-          godot --headless --export-release "$PLATFORM" export/$FILENAME$EXT
-        fi
-        
-        godot --no-window --export-release "$PLATFORM" export/$FILENAME$EXT
+        godot --headless --export-release "$PLATFORM" export/$FILENAME$EXT
 
     - name: Upload result to artifact
       uses: actions/upload-artifact@v4
