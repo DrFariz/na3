@@ -94,10 +94,11 @@ jobs:
         EXT=${{ fromJSON(env.EXTS)[env.PLATFORM] || '.zip' }}
         echo "EXT=${EXT}" >> $GITHUB_ENV
         echo "version: $VERSION"
-        if [ $VERSION == "3.6.stable" ]; then
-          godot --no-window --export "$PLATFORM" export/$FILENAME$EXT
+        if [ $VERSION == "4.3.dev3" ]; then
+          godot --headless --export-release "$PLATFORM" export/$FILENAME$EXT
         fi
-        godot --verbose --headless --export-debug "$PLATFORM" export/$FILENAME$EXT
+        
+        godot --no-window --export "$PLATFORM" export/$FILENAME$EXT
 
     - name: Upload result to artifact
       uses: actions/upload-artifact@v4
